@@ -9908,7 +9908,7 @@ body.mini-navbar .navbar-static-side{
 }
 .dec-wd {
   height: 30px;
-  width: 190px;
+  width: 100%;
   padding: 0;
   overflow: hidden;
   text-decoration: none;

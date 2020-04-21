@@ -27,7 +27,9 @@
             <ng-container *ngIf='products && products.length'>
                 <div class="row col-lg-3">
                     <table>
-                       
+                        <tr>
+                            <strong>Filter based on Product categories:</strong>
+                        </tr>
                         <tr>
                             <input type="checkbox" [(ngModel)]="filter.game" (ngModelChange)="filterChange()" /> Game
                         </tr>
@@ -39,8 +41,8 @@
                                 (ngModelChange)="filterChange()" /> Entertainment
                         </tr>
                         <tr>
-                            <div style="padding-top: 10px;">
-                                Star Rating: <select [(ngModel)]="filter.ratings"
+                            <div class="pd-tp">
+                                <strong>Star Ratings: </strong><select [(ngModel)]="filter.ratings" class="form-control"
                                     (change)="onChangeStarProducts($event.target.value)">
                                     <option value="">Select Star ratings</option>
                                     <option value=5>5 stars</option>
@@ -54,8 +56,8 @@
                         </tr>
  
                         <tr>
-                                <div style="padding-top: 10px;">
-                                    Select Location: <select [(ngModel)]="filter.location"
+                                <div class="pd-tp">
+                                    <strong> Location: </strong> <select [(ngModel)]="filter.location" class="form-control"
                                         (change)="onChangeProductsLocation()">
                                         <option value="">Select Location</option>
                                         <option value='0'>Ahmedabad</option>
@@ -67,7 +69,8 @@
                             </tr>
 
                         <tr>
-                            <div style="padding-top: 10px;">
+                            <div class="pd-tp">
+                                    <strong> Availability: </strong><br>
                                 <input type="radio" [(ngModel)]="filter.inStock" name="inStock" value="inStock"
                                     (ngModelChange)="filterChangeinStock()">In Stock<br>
                                 <input type="radio" [(ngModel)]="filter.inStock" name="inStock" value="notinStock"
