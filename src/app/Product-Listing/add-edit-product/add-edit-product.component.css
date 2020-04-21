@@ -1,0 +1,16 @@
+.ds-fx {
+    display: inline-flex;
+}
+.dp-fx {
+    display: flex;
+}
+.ibox-title{
+    padding-right: 10px;
+}
+.ibox-content {
+    height: 288px;
+}
+.ls-select{
+    height: 33px;
+    width: 200px;
+}

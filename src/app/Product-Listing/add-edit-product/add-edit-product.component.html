@@ -1,0 +1,219 @@
+<div id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-wrapper" class="gray-bg">
+        <app-header></app-header>
+        <div class="row wrapper border-bottom white-bg page-heading pd-top">
+            <div class="col-lg-9">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a [routerLink]="['/']">Product Lisitng</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Product Update</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="wrapper wrapper-content">
+            <div class='card'>
+                <div class='card-header'>
+                    {{pageTitle}}
+                </div>
+
+
+                <div class='card-body'>
+                    <div class='row'>
+                        <div class='col-md-8'>
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
+                                        <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+
+                                            <div class="form-group">
+                                                <label>Title *</label>
+                                                <input type="text" maxlength="50" class="form-control"
+                                                    placeholder="Enter Title" formControlName="productName" required>
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['productName'].valid && (productForm.controls['productName'].touched)">
+                                                    <div
+                                                        [hidden]="!productForm.controls['productName'].errors.required">
+                                                        Product Title is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Description *</label>
+                                                <textarea class="form-control" class="form-control" maxlength="150"
+                                                    placeholder="Description" formControlName="description" required
+                                                    rows=3 name="description">
+                                                 </textarea>
+
+                                                <!-- <input type="text" class="form-control" maxlength="150"
+                                                    placeholder="Description" formControlName="description" required> -->
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['description'].valid && (productForm.controls['description'].touched)">
+                                                    <div
+                                                        [hidden]="!productForm.controls['description'].errors.required">
+                                                        Description is required.
+                                                    </div>
+                                                    <div
+                                                        [hidden]="!productForm.controls['description'].errors.minlength">
+                                                        Description must be have 10 character length.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Price *</label>
+                                                <input type="number" class="form-control" placeholder="price"
+                                                    formControlName="price" required>
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['price'].valid && (productForm.controls['price'].touched)">
+                                                    <div [hidden]="!productForm.controls['price'].errors.required">
+                                                        Price is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Image URL *</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Enter Image URL" formControlName="imageUrl" required>
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['imageUrl'].valid && (productForm.controls['imageUrl'].touched)">
+                                                    <div [hidden]="!productForm.controls['imageUrl'].errors.required">
+                                                        Image URL is required.
+                                                    </div>
+                                                    <div
+                                                        [hidden]="productForm.controls['imageUrl'].errors.required && productForm.controls['imageUrl'].errors">
+                                                        Please Enter valid Image URL.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Product Code *</label>
+                                                <input type="text" maxlength="10" class="form-control"
+                                                    placeholder="Enter Product Code" formControlName="productCode"
+                                                    required>
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['productCode'].valid && (productForm.controls['productCode'].touched)">
+                                                    <div
+                                                        [hidden]="!productForm.controls['productCode'].errors.required">
+                                                        Product Code is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Product Ratings *</label>
+                                                <input type="number" id="starRating" class="form-control"
+                                                    placeholder="Enter Product Ratings" formControlName="starRating"
+                                                    min="0" max="100" required>
+                                                <div class="alert-danger"
+                                                    *ngIf="!productForm.controls['starRating'].valid && (productForm.controls['starRating'].touched)">
+                                                    <div [hidden]="!productForm.controls['starRating'].errors.required">
+                                                        Product Ratings is required.
+                                                    </div>
+                                                    <div
+                                                        [hidden]="productForm.controls['starRating'].errors.required && productForm.controls['starRating'].errors">
+                                                        Enter Product Ratings from 1 to 5.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Availibility *</label><br>
+
+                                                <div class="ds-fx">
+                                                    <label class="ds-fx">
+                                                        <input type="radio" value="inStock" formControlName="inStock">
+                                                        <span>In Stock</span>
+                                                    </label>
+                                                    <div class="col-md-1"></div>
+                                                    <label class="ds-fx">
+                                                        <input type="radio" value="notinStock"
+                                                            formControlName="inStock">
+                                                        <span>Not In Stock</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="alert-danger"
+                                                *ngIf="!productForm.controls['inStock'].valid && (productForm.controls['inStock'].touched)">
+                                                <div [hidden]="!productForm.controls['inStock'].errors.required">
+                                                    Availibility is required.
+                                                </div>
+                                            </div>
+
+
+
+                                            <div>
+                                                <label>Category *</label><br>
+                                                <div>
+                                                <select formControlName="category" class="form-control">
+                                                    <option *ngFor="let option of categoryList; index as i"
+                                                        [value]="option.value">
+                                                        {{ option.description }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            </div>
+                                            <div class="alert-danger"
+                                                *ngIf="!productForm.controls['category'].valid && (productForm.controls['category'].touched)">
+                                                <div [hidden]="!productForm.controls['category'].errors.required">
+                                                    Category is required.
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label>Locations *</label>
+                                                <div style="display: flex;">
+                                                    <div formArrayName="location" *ngFor="let genre of productForm.get('location')['controls']; let i = index"
+                                                        class="col-md-3">
+                                                        <input type="checkbox" [formControlName]="i">
+                                                        {{locationsList[i].description}}
+                                                    </div>
+                                                </div>
+                                                <p class="error" class="alert-danger" *ngIf="productForm.controls['location'].errors?.required && 
+                                                    productForm.controls['location'].touched">
+                                                    Locations is required., select atleast one value.
+                                                </p>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary"
+                                                [disabled]="!productForm.valid">Submit</button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div *ngIf='errorMessage' class='alert alert-danger'>
+                        Error: {{ errorMessage }}
+                    </div>
+
+                </div>
+
+                <div class='card-footer'>
+                    <button class='btn btn-outline-secondary' (click)='onBack()' style='width:80px'>
+                        <i class='fa fa-chevron-left'></i> Back
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

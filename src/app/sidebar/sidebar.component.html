@@ -1,0 +1,27 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="slimScrollDiv">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li>
+                    <a>
+                        <span class="nav-label"></span>   
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/product-listing']">
+                        <i class="fa fa-list"></i>
+                        <span class="nav-label">Home</span>
+                        <i class="fa fa-caret-left active_icon"></i>
+                    </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['/trash']"> 
+                        <i class="fa fa-trash "></i>
+                        <span class="nav-label">Trash</span>
+                        <i class="fa fa-caret-left active_icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

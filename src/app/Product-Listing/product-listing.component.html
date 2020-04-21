@@ -1,0 +1,127 @@
+<div id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-wrapper" class="gray-bg">
+        <app-header></app-header>
+        <div class="row wrapper border-bottom white-bg page-heading pd-top">
+
+            <div class="col-lg-9">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a [routerLink]="['/product-listing']">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Products</strong>
+                    </li>
+                </ol>
+            </div>
+
+            <div class='col-lg-3'>
+                    <span *ngIf="!listFilter" class="add-on"><i class="fa fa-search"></i></span>
+                <input type='text' class="ls-select" [(ngModel)]='listFilter' />
+
+                <button class="btn btn-success fl-rt" (click)="navigateToAddEditProduct(0)"><i
+                        class="fa fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="wrapper wrapper-content dp-fx">
+            <ng-container *ngIf='products && products.length'>
+                <div class="row col-lg-3">
+                    <table>
+                       
+                        <tr>
+                            <input type="checkbox" [(ngModel)]="filter.game" (ngModelChange)="filterChange()" /> Game
+                        </tr>
+                        <tr>
+                            <input type="checkbox" [(ngModel)]="filter.tools" (ngModelChange)="filterChange()" />
+                            Tools
+                        <tr>
+                            <input type="checkbox" [(ngModel)]="filter.entertainment"
+                                (ngModelChange)="filterChange()" /> Entertainment
+                        </tr>
+                        <tr>
+                            <div style="padding-top: 10px;">
+                                Star Rating: <select [(ngModel)]="filter.ratings"
+                                    (change)="onChangeStarProducts($event.target.value)">
+                                    <option value="">Select Star ratings</option>
+                                    <option value=5>5 stars</option>
+                                    <option value=4>4 stars & above</option>
+                                    <option value=3>3 stars & above</option>
+                                    <option value=2>2 stars & above</option>
+                                    <option value=1>1 star & above</option>
+
+                                </select>
+                            </div>
+                        </tr>
+ 
+                        <tr>
+                                <div style="padding-top: 10px;">
+                                    Select Location: <select [(ngModel)]="filter.location"
+                                        (change)="onChangeProductsLocation()">
+                                        <option value="">Select Location</option>
+                                        <option value='0'>Ahmedabad</option>
+                                        <option value='1'>Gandhinagar</option>
+                                        <option value='2'>Mehsana</option>
+                                        <option value='3'>Vadodara</option>   
+                                    </select>
+                              </div>
+                            </tr>
+
+                        <tr>
+                            <div style="padding-top: 10px;">
+                                <input type="radio" [(ngModel)]="filter.inStock" name="inStock" value="inStock"
+                                    (ngModelChange)="filterChangeinStock()">In Stock<br>
+                                <input type="radio" [(ngModel)]="filter.inStock" name="inStock" value="notinStock"
+                                    (ngModelChange)="filterChangeinStock()">Out of Stock
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row col-lg-9">
+                    <!-- <ng-container *ngIf='filteredProducts && filteredProducts.length'> -->
+                    <div class="col-lg-4" *ngFor='let product of filteredProducts; let i=index'>
+                        <div class="ibox">
+                            <div (click)="navigateToProductDetails(product)">
+                                <div class="ibox-title">
+                                    <h5>{{product.productName}}</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <h4>Product Ratings</h4>
+                                    <p>
+                                        {{product.starRating}}
+                                    </p>
+                                    <h4>Product Description</h4>
+                                    <p class="dec-wd">
+                                        {{product.description}}
+                                    </p>
+                                    <img [src]='product.imageUrl' [title]='product.productName' width="100%"
+                                        height="150" alt="NO IMAGE AVAILIBLE" />
+                                </div>
+                            </div>
+                            <div>
+                                <button class="col-lg-6 btn-success" [ngClass]="product.liked ? 'bg-clr' : ''" id="i"
+                                    (click)="likeProduct(product, i)">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </button>
+                                <button class="col-lg-6 btn-danger" (click)="deleteProduct(product)"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </ng-container> -->
+                    <div class="col-lg-12" *ngIf='filteredProducts && filteredProducts.length == 0'>
+                        No Products Found.
+                    </div>
+                </div>
+
+
+            </ng-container>
+            <ng-container *ngIf='products.length == 0'>
+                Add Products by clicking on &nbsp; <strong>+</strong>  &nbsp;icon
+            </ng-container>
+
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

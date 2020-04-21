@@ -1,0 +1,19 @@
+.pd-top {
+    padding-top: 10px;
+}
+.dp-fx {
+    display: flex;
+}
+.ibox-title{
+    padding-right: 10px;
+}
+.ibox-content {
+    height: 288px;
+}
+.fl-rt {
+    float: right;
+}
+.ls-select{
+    height: 33px;
+    width: 200px;
+}
