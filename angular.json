@@ -33,6 +33,7 @@
               "src/assets/js/popper.min.js",
               "src/assets/js/bootstrap.js",
               "src/assets/js/inspinia.js",
+              "node_modules/jquery/dist/jquery.js",
               "src/assets/js/plugins/metisMenu/jquery.metisMenu.js",
               "src/assets/js/plugins/slimscroll/jquery.slimscroll.min.js",
               "src/assets/js/plugins/pace/pace.min.js"
