@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { IProduct } from '../Product-Listing/product';
-import { DataService } from '../Shared/Services/data.service';
+import { IProduct } from '../product';
+import { DataService } from 'src/app/Shared/Services/data.service';
 
 @Component({
   selector: 'app-view-product',
